@@ -417,7 +417,7 @@ function getOpenspadesReleases(callback, tag) {
         for(var i = 0; i < response.assets.length; i++) {
             var asset = response.assets[i];
             
-            if (asset.content_type == "application/zip") {
+            if (asset.content_type == "application/zip" || asset.content_type == "application/x-zip-compressed") {
 
                 var platform;
 
@@ -453,7 +453,7 @@ function getPysnipReleases(callback, tag) {
             var split = release.tag_name.split("-");
             var version = split[0] + " (rev. " + split[2] + ")";
 
-            if (asset.content_type == "application/zip") {
+            if (asset.content_type == "application/zip" || asset.content_type == "application/x-zip-compressed") {
 
                 var release = new Release(asset.name, version, asset.created_at, PLATFORM.WINDOWS, asset.browser_download_url);
                 releases.push(release);
